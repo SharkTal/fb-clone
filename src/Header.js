@@ -12,18 +12,20 @@ import AddIcon from '@material-ui/icons/Add';
 import ForumIcon from '@material-ui/icons/Forum';
 import GolfCourseIcon from '@material-ui/icons/GolfCourse';
 import { Avatar, IconButton } from '@material-ui/core';
-
+import { useStateValue } from './StateProvider';
 
 function Header() {
+    const [{ user }, dispatch] = useStateValue();
     return (
         <div className="header">
-            <div className="header__left"></div>
-            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.iphonehacks.com%2Fwp-content%2Fuploads%2F2019%2F12%2FFacebook-logo.jpg&f=1&nofb=1" alt="Facebook logo" />
-            <div className="header__input">
-                <SearchIcon />
-                <input placeholder='Search Facebook' text="text" />
+            <div className="header__left">
+                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.iphonehacks.com%2Fwp-content%2Fuploads%2F2019%2F12%2FFacebook-logo.jpg&f=1&nofb=1" alt="Facebook logo" />
+                <div className="header__input">
+                    <SearchIcon />
+                    <input placeholder='Search Facebook' text="text" />
+                </div>
             </div>
-            <div className="header__center"></div>
+            <div className="header__center">
                 <div className="header__option header__option--active">
                     <HomeIcon fontSize="large" />
                 </div>
@@ -39,10 +41,11 @@ function Header() {
                 <div className="header__option">
                     <SupervisedUserCircleIcon fontSize="large" />
                 </div>
+            </div>
             <div className="header__right">
                 <div className="header__info">
-                    <Avatar />
-                    <h4>sshaa</h4>
+                    <Avatar src={user.photoURL} />
+                    <h4>{user.displayName}</h4>
                 </div>
                 <IconButton>
                     <AddIcon />
