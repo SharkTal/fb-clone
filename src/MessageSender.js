@@ -8,6 +8,7 @@ import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import { useStateValue } from './StateProvider';
 import db from './firebase';
 import firebase from 'firebase';
+
 function MessageSender() {
     const [{user}, dispatch] = useStateValue();
     const [input, setInput] = useState('');
